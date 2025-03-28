@@ -41,5 +41,16 @@ services:
       - db
       - redis
 
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+      # - "443:443" # Uncomment if you configure HTTPS
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - web
+
+
 volumes:
   postgres_data:
